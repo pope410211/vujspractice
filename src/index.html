@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+    <div class="container">
+    <div id="tasks">
+
+        <div>
+          <h1>Tasks ({{ tasks.length }})</h1>
+
+          <ol class="list-group">
+
+            <li v-repeat="task: tasks | inProcess" class="list-group-item">
+
+              <span v-on="dblclick: editTask(task)">{{ task.body }}</span>
+            <button v-on="click: removeTask (task)">&#10007;</button>
+            <button v-on="click: completeTask(task)">&#10004;</button>
+
+            </li>
+          </ol>
+
+    </div>
+
+    <form v-on="submit: addTask">
+      <div class="form-group">
+        <input v-model="newTask" v-el="newTask" class="form-control" placeholder="I need to..."></input>
+
+
+      </div>
+
+      <button class="btn btn-primary" id="adbtn">Add Task</button>
+</form>
+
+      <div>
+        <h2>Completed</h2>
+      </div>
+
+
+  </div>
+      <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/vue/dist/vue.js"></script>
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <!-- endbower -->
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
